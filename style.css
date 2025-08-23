@@ -1,11 +1,28 @@
+body {
+    background-color: #e3e3e3;
+}
+
+#newGrid {
+    text-align: center;
+    margin: 20px auto;
+}
+
+#newGrid button {
+    padding: 8px 24px;
+    font-size: 1rem;
+    font-weight: 600;
+}
+
 #container {
     display: flex;
     margin: 0 auto;
     flex-wrap: wrap;
+    border: 1px solid #000;
+    background-color: #fff;
 }
 
 .square {
     box-sizing: border-box;
-    border: 1px solid #000;
+    /* border: 1px solid #000; */
     flex-shrink;    
 }
