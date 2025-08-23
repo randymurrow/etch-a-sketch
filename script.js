@@ -5,6 +5,7 @@ container.style.width = `${containerWidth}px`;
 let gridXY = 16;
 let squareXY = Math.floor(containerWidth / gridXY);
 let squareCount = 0;
+let inkColor = '#000';
 
 for (i = 0; i < gridXY ** 2; i++) {
     let newSquare = document.createElement('div');
@@ -14,4 +15,10 @@ for (i = 0; i < gridXY ** 2; i++) {
     squareCount += 1;
 }
 
-console.log(squareCount);
+let squareDivs = document.querySelectorAll(".square");
+
+squareDivs.forEach(square => {
+    square.addEventListener('mouseover', function() {
+        square.style.backgroundColor = inkColor;
+    })
+});
