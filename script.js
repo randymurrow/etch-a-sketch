@@ -1,8 +1,14 @@
-let containerWidth = 960;
-const container = document.querySelector('#container');
+let containerWidth = 640;
 container.style.width = `${containerWidth}px`;
+buttons.style.width = `${containerWidth}px`;
 let gridXY = 16;
 let maxGrid = 100;
+let modes = ['Mono', 'Multi', 'Grayscale'];
+let modesIndex = 2;
+
+function getRandomRGB() {
+      return Math.floor(Math.random() * 255);
+}
 
 function makeGrid(num) {
     let squareXY = containerWidth / num;
@@ -18,26 +24,48 @@ function makeGrid(num) {
         squareCount += 1;
     }
 
-    let squareDivs = document.querySelectorAll(".square");
-
+    let squareDivs = document.querySelectorAll('.square');
     squareDivs.forEach(square => {
+        let opacity = 0.0;
         square.addEventListener('mouseover', function() {
-            square.style.backgroundColor = inkColor;
-    })
-});
+            let mode = modes[modesIndex];
+            if (mode == 'Mono') {
+                square.style.backgroundColor = inkColor;
+            } else if (mode == 'Multi') {
+                square.style.backgroundColor = `rgb(${getRandomRGB()},${getRandomRGB()},${getRandomRGB()})`;
+            } else {
+                opacity += 0.1;
+                square.style.backgroundColor = `rgba(0, 0, 0, ${opacity})`;
+                return opacity;
+            }
+        })
+    });
 }
 
 makeGrid(gridXY);
 
-let newGrid = document.querySelector("#newGrid");
-let gridBtn = newGrid.querySelector('button');
-
-gridBtn.addEventListener('click', () => {
-    let userGrid = prompt('Enter the number of squares per side');
-    if (userGrid > maxGrid) {
-        alert(`Exceeds maximum of ${maxGrid}! Outputting maximum-sided grid.`)
-        userGrid = maxGrid;
+let newGrid = document.querySelector('#newGrid');
+newGrid.addEventListener('click', () => {
+    squares = prompt('Enter the number of squares per side (1–100');
+    if (squares > maxGrid || squares < 1) {
+        return alert(`Value is outside of allowed range.`);
     }
-    console.log(userGrid);
-    makeGrid(userGrid);
+    gridXY = squares;
+    makeGrid(gridXY);
+    return gridXY;
+})
+
+let reset = document.querySelector('#reset');
+reset.addEventListener('click', () => {
+    makeGrid(gridXY);
+})
+
+let toggleMode = document.querySelector('#toggleMode');
+toggleMode.addEventListener('click', () => {
+    if (modesIndex < 2) {
+        modesIndex += 1
+    } else {
+        modesIndex = 0;
+    }
+    makeGrid(gridXY);
 })

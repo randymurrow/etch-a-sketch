@@ -1,13 +1,23 @@
 body {
-    background-color: #e3e3e3;
-}
-
-#newGrid {
+    background-color: #cacaca;
     text-align: center;
-    margin: 20px auto;
+    font-family: Roboto, sans-serif;}
+
+#header {
+    margin: 24px;
+    font-size: 2rem;
+    font-weight: 600;
+    text-transform: uppercase;
 }
 
-#newGrid button {
+#buttons {
+    display: flex;
+    margin: 20px auto;
+    gap: 20px;
+}
+
+#buttons button {
+    flex: 1;
     padding: 8px 24px;
     font-size: 1rem;
     font-weight: 600;
@@ -15,7 +25,7 @@ body {
 
 #container {
     display: flex;
-    margin: 0 auto;
+    margin: 20px auto;
     flex-wrap: wrap;
     border: 1px solid #000;
     background-color: #fff;
@@ -23,6 +33,5 @@ body {
 
 .square {
     box-sizing: border-box;
-    /* border: 1px solid #000; */
     flex-shrink;    
 }
