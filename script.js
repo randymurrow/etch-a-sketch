@@ -4,7 +4,7 @@ buttons.style.width = `${containerWidth}px`;
 let gridXY = 16;
 let maxGrid = 100;
 let modes = ['Mono', 'Multi', 'Grayscale'];
-let modesIndex = 2;
+let modesIndex = 0;
 
 function getRandomRGB() {
       return Math.floor(Math.random() * 255);
